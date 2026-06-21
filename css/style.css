@@ -679,64 +679,66 @@ section{
 
 
 /* =====================================================
-   SKILLS
+   SKILLS (Desktop Layout - Keeps Floating Positions)
 ===================================================== */
 
-
-.skills-container{
-
-
-    height:400px;
-
-    position:relative;
-
+.skills-container {
+    height: 400px;
+    position: relative;
+    width: 100%;
 }
 
-
-
-.floating-skill{
-
-
-    position:absolute;
-
-
-    padding:25px 40px;
-
-
-    border-radius:50px;
-
-
-    background:var(--glass);
-
-
-    border:1px solid var(--border);
-
-
-    backdrop-filter:blur(20px);
-
-
-    font-weight:600;
-
-
-    animation:float 6s infinite ease-in-out;
-
-
+.floating-skill {
+    position: absolute;
+    padding: 25px 40px;
+    border-radius: 50px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    font-weight: 600;
+    white-space: nowrap; /* Prevents words like JavaScript from breaking in half */
+    animation: float 6s infinite ease-in-out;
 }
 
+/* Individual floating offsets for large screens */
+.skill-one { left: 10%; top: 20%; }
+.skill-two { left: 40%; top: 10%; }
+.skill-three { right: 15%; top: 20%; }
+.skill-four { left: 20%; top: 60%; }
+.skill-five { right: 25%; top: 60%; }
+.skill-six { left: 50%; top: 70%; }
+.skill-seven { right: 10%; top: 45%; }
+.skill-eight { left: 40%; top: 40%; }
 
 
+/* =====================================================
+   MOBILE RESPONSIVE ADJUSTMENTS (For Phone Screens)
+===================================================== */
+@media (max-width: 768px) {
+    .skills-container {
+        /* Disables fixed height and turns the container into a flexible grid wrapper */
+        height: auto; 
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;       /* Allows elements to drop gracefully to the next line */
+        justify-content: center;
+        gap: 12px;             /* Adds uniform spacing between the badges */
+        padding: 20px 10px;
+    }
 
-
-.skill-one{left:10%;top:20%;}
-.skill-two{left:40%;top:10%;}
-.skill-three{right:15%;top:20%;}
-.skill-four{left:20%;top:60%;}
-.skill-five{right:25%;top:60%;}
-.skill-six{left:50%;top:70%;}
-.skill-seven{right:10%;top:45%;}
-.skill-eight{left:40%;top:40%;}
-
-
+    .floating-skill {
+        /* Removes absolute positioning so Flexbox can take control */
+        position: relative;
+        left: auto !important;
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        
+        /* Slightly reduces heavy desktop padding so they fit nicely on tight screens */
+        padding: 15px 25px; 
+        font-size: 0.95rem;
+    }
+}
 
 @keyframes float{
 
