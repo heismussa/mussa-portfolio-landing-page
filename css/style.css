@@ -136,6 +136,30 @@ body{
 
 }
 
+.profile-img {
+  max-width: 100%;  /* Prevents the image from ever being wider than the phone screen */
+  height: auto;     /* Maintains the original aspect ratio so it doesn't look stretched */
+  display: block;
+}
+
+/* Desktop Styles (Default) */
+.hero-section {
+  display: flex;
+  flex-direction: row; /* Side-by-side layout */
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Mobile Styles (For screens smaller than 768px) */
+@media (max-width: 768px) {
+  .hero-section {
+    flex-direction: column-reverse; /* Stacks vertically; text drops below or image moves up */
+    text-align: center;            /* Centers text beautifully on phone screens */
+    padding: 20px;
+  }
+}
+
 
 
 
